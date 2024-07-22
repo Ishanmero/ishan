@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Message</title>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <form id="nameForm">
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="message"></p>
+
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name');
+            if (name) {
+                let message;
+                if (name === 'Erik') {
+                    message = 'Hi Erik!';
+                } else if (name === 'Sarah') {
+                    message = 'Sarah, I love you!';
+                } else if (name === 'Luan') {
+                    message = 'I don\'t like you, Luan.';
+                } else {
+                    message = `Hello, ${name}! This is your personalized message.`;
+                }
+                document.getElementById('message').textContent = message;
+                document.getElementById('nameForm').style.display = 'none';
+            }
+        };
+
+        document.getElementById('nameForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            let message;
+            if (name === 'Erik') {
+                message = 'Hi Erik!';
+            } else if (name === 'Sarah') {
+                message = 'Sarah, I love you!';
+            } else if (name === 'Luan') {
+                message = 'I don\'t like you, Luan.';
+            } else {
+                message = `Hello, ${name}! This is your personalized message.`;
+            }
+            document.getElementById('message').textContent = message;
+        });
+    </script>
+</body>
+</html>
 
